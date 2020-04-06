@@ -8,6 +8,7 @@ eureka:
       defaultzone: http://localhost:8011/eureka/,http://localhost:8012/eureka/,http://localhost:8013/eureka/
   instance:
     hostname: localhost
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
 #server:
 #  port: ${PORT:${SERVER_PORT:0}}   # Select any available port if neither port nor server port are specified.
 
@@ -41,4 +42,9 @@ words: reasonable,leaky,suspicious,ordinary,unlikely
 ---
 spring:
   profiles: noun
-words: boat,book,vote,seat,backpack,partition,groundhog 
+words: boat,book,vote,seat,backpack,partition,groundhog
+
+---
+spring:
+  profiles: cold-noun
+words: icicle,refrigerator,blizzard,snowball
